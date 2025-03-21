@@ -1,0 +1,18 @@
+Starting minimal load test against http://10.102.43.86
+Press Ctrl+C to stop...
+13:33:46 - Made GET request to /api/users
+13:35:59 - Made GET request to /api/users
+13:38:12 - Made GET request to /api/users
+13:40:25 - Made GET request to /api/slow?delay=0.5
+13:42:38 - Made GET request to /api/users
+14:24:36 - Made GET request to /api/slow?delay=0.5
+14:26:49 - Made GET request to /api/error
+14:29:02 - Made GET request to /api/slow?delay=0.5
+14:31:15 - Made GET request to /api/slow?delay=0.5
+14:33:28 - Made GET request to /api/slow?delay=0.5
+14:35:41 - Made GET request to /api/error
+14:37:54 - Made GET request to /api/users
+14:40:07 - Made GET request to /api/slow?delay=0.5
+14:42:21 - Made GET request to /api/error
+14:44:34 - Made GET request to /api/slow?delay=0.5
+14:46:47 - Made GET request to /api/error

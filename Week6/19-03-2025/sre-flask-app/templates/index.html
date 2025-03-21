@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRE Demo API Documentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>SRE Demo API</h1>
+        <p>Version {{ version }}</p>
+    </div>
+
+    <div class="container">
+        <div class="endpoints-grid">
+            <!-- Users Endpoint -->
+            <div class="endpoint-card">
+                <h3>Get Users</h3>
+                <span class="method get">GET</span>
+                <div class="url">/api/users</div>
+                <p>Retrieve a list of users from the database.</p>
+                <div class="response">
+{
+    "users": [
+        {"id": 1, "name": "Alice", "email": "alice@example.com"},
+        {"id": 2, "name": "Bob", "email": "bob@example.com"}
+    ]
+}</div>
+                <span class="status-badge success">200 OK</span>
+            </div>
+
+            <!-- Echo Endpoint -->
+            <div class="endpoint-card">
+                <h3>Echo Request</h3>
+                <span class="method post">POST</span>
+                <div class="url">/api/echo</div>
+                <p>Echo back the JSON data received in the request body.</p>
+                <div class="response">
+{
+    "message": "Your request data will be echoed back"
+}</div>
+                <span class="status-badge success">200 OK</span>
+            </div>
+
+            <!-- Error Endpoint -->
+            <div class="endpoint-card">
+                <h3>Simulate Error</h3>
+                <span class="method get">GET</span>
+                <div class="url">/api/error</div>
+                <p>Simulate different types of errors for testing.</p>
+                <div class="response">
+{
+    "error": "Error message will vary based on type"
+}</div>
+                <span class="status-badge error">400/500</span>
+            </div>
+
+            <!-- Slow Endpoint -->
+            <div class="endpoint-card">
+                <h3>Slow Response</h3>
+                <span class="method get">GET</span>
+                <div class="url">/api/slow?delay=1</div>
+                <p>Simulate a slow API response with configurable delay.</p>
+                <div class="response">
+{
+    "message": "Slow response completed after X seconds"
+}</div>
+                <span class="status-badge warning">200 OK</span>
+            </div>
+
+            <!-- Health Check Endpoints -->
+            <div class="endpoint-card">
+                <h3>Health Checks</h3>
+                <span class="method get">GET</span>
+                <div class="url">/health/liveness</div>
+                <p>Basic health check endpoint.</p>
+                <div class="response">
+{
+    "status": "alive",
+    "timestamp": "2024-03-19T04:44:39"
+}</div>
+                <span class="status-badge success">200 OK</span>
+            </div>
+
+            <div class="endpoint-card">
+                <h3>Readiness Check</h3>
+                <span class="method get">GET</span>
+                <div class="url">/health/readiness</div>
+                <p>Detailed readiness check including dependencies.</p>
+                <div class="response">
+{
+    "status": "ready",
+    "checks": {
+        "database": "connected"
+    }
+}</div>
+                <span class="status-badge success">200 OK</span>
+            </div>
+
+            <!-- Metrics Endpoint -->
+            <div class="endpoint-card">
+                <h3>Prometheus Metrics</h3>
+                <span class="method get">GET</span>
+                <div class="url">/metrics</div>
+                <p>Expose Prometheus metrics for monitoring.</p>
+                <div class="response">
+# HELP app_request_count Application Request Count
+# TYPE app_request_count counter
+...</div>
+                <span class="status-badge success">200 OK</span>
+            </div>
+        </div>
+
+        <div class="metrics-section">
+            <h2>Available Metrics</h2>
+            <p>The following metrics are available for monitoring:</p>
+            <ul>
+                <li><strong>app_request_count</strong> - Total number of requests by endpoint, method, and status</li>
+                <li><strong>app_request_latency_seconds</strong> - Request latency histogram by endpoint and method</li>
+                <li><strong>app_error_count</strong> - Number of errors by type and endpoint</li>
+                <li><strong>app_active_requests</strong> - Current number of active requests being processed</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

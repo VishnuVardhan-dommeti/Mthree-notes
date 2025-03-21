@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sre-flask-app-config
+  namespace: sre-demo
+data:
+  LOG_LEVEL: "INFO"
